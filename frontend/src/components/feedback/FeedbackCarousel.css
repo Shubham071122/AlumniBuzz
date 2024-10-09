@@ -1,0 +1,10 @@
+/* Replace `.my-class` with your actual class name */
+.hide_scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
+  
+  .hide_scrollbar {
+    scrollbar-width: none; /* Firefox */
+    scrollbar-color: transparent transparent; /* Firefox (optional, removes track color) */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
