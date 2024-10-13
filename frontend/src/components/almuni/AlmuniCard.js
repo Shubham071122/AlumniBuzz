@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 function AlumniCard({
+  key,
   name,
   college,
   current_company,
@@ -11,7 +12,7 @@ function AlumniCard({
 }) {
   return (
     <>
-      <div className="bg-white border shadow-lg rounded-lg p-5">
+      <div className="bg-white border shadow-lg rounded-3xl p-5">
         <img
           src={image_url}
           alt={`${name}'s image`}
@@ -30,7 +31,7 @@ function AlumniCard({
           </ul>
         </div>
         <div className='mt-4 flex items-center justify-end gap-4'>
-            <NavLink className="bg-gray-400 text-white px-3 py-2 rounded-full hover:bg-gray-500">
+            <NavLink to={`almuni-profile/${key}`} className="bg-gray-400 text-white px-3 py-2 rounded-full hover:bg-gray-500">
                 View
             </NavLink>
             <NavLink className="bg-violet-500 text-white px-3 py-2 rounded-full navani">
