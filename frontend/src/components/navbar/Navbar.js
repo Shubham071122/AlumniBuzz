@@ -175,7 +175,7 @@ function Navbar() {
       {/* Hamburger Menu - Sliding from the left */}
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full w-[250px] bg-red-600 z-50 transform ${
+        className={`fixed top-0 right-0 h-full w-[250px] bg-gray-50 z-50 transform ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         } transition-transform duration-300 shadow-lg `}
       >

@@ -5,6 +5,7 @@ import Footer from '../../components/footer/Footer';
 import { IoSchool, IoLogoLinkedin, IoLogoGithub } from 'react-icons/io5';
 import { PiGearFill } from 'react-icons/pi';
 import Breadcrumbs from '../../components/breadCrumbs/BreadCrumbs';
+import AlumniAvailability from '../../components/almuni/AlumniAvailability';
 
 function AlumniProfile() {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -50,7 +51,7 @@ function AlumniProfile() {
             <Breadcrumbs />
           </div>
           {/* Left side: Profile section */}
-          <div className="w-full lg:w-1/3 bg-white p-6 rounded-3xl shadow-md md:sticky sm:top-0 h-auto sm:h-[80vh]">
+          <div className="w-full lg:w-1/3 bg-white p-6 rounded-3xl shadow-md lg:sticky lg:top-0 h-auto sm:h-[80vh]">
             <div className="w-full flex flex-col items-center justify-center ">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy5Kp7mr110eb2v36-XoZf1OMOqkDhYgfjhA&s"
@@ -108,21 +109,24 @@ function AlumniProfile() {
           </div>
 
           {/* Right side: Description section */}
-          <div className="w-full lg:w-2/3 py-10 sm:py-0 sm:pb-1 sm:pl-8 overflow-y-auto lg:overflow-hidden">
-            <div className="sm:p-3 mb-3">
+          <div className="w-full lg:w-2/3 py-10 sm:py-0 sm:pb-1 sm:pl-8 overflow-y-auto lg:overflow-hidden flex flex-col gap-4">
               {/* Short description */}
+            <div className="sm:p-3">
               <span className="bg-purple-200 font-semibold px-4 py-2 rounded-full text-purple-800 ">
                 Software Developer
               </span>
-              <p className="text-gray-600 text-3xl sm:text-4xl font-bold text-wrap tracking-normal mt-4">
+              <p className="text-gray-700 text-3xl sm:text-4xl font-bold text-wrap tracking-normal mt-4">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s,
               </p>
             </div>
 
+            {/* Availability calendar */}
+              <AlumniAvailability/>
+
             {/* About section */}
-            <div className="bg-white p-6 mb-3 rounded-3xl shadow-md">
+            <div className="bg-white p-6 rounded-3xl shadow-md">
               <h3 className="text-xl font-bold text-purple-900">About</h3>
               <p className="text-gray-600 mt-3">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -139,7 +143,7 @@ function AlumniProfile() {
             </div>
 
             {/* Job planning section */}
-            <div className="bg-white p-6 mb-6 rounded-3xl shadow-md">
+            <div className="bg-white p-6 rounded-3xl shadow-md">
               <h3 className="text-xl font-bold text-purple-900">
                 Job Planning
               </h3>
@@ -158,137 +162,7 @@ function AlumniProfile() {
             </div>
 
             {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 mb-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold text-purple-900">
-                Projects & Achievements
-              </h3>
-              <p className="text-gray-600 mt-3">
-                Detailed information about alumni's work, projects, and key
-                achievements.
-              </p>
-            </div>
-            {/* Additional sections */}
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-3xl shadow-md">
               <h3 className="text-xl font-bold text-purple-900">
                 Projects & Achievements
               </h3>
