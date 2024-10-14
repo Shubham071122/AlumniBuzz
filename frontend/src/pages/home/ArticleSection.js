@@ -6,7 +6,7 @@ function ArticleSection() {
   return (
     <div>
       <MaxwidthXXL>
-        <div className="bg-purple-300 p-6 sm:p-10 md:px-14 rounded-tl-[50px] md:rounded-tl-[100px] rounded-br-[50px] md:rounded-br-[100px] shadow-xl">
+        <div className="bg-purple-300 p-6 sm:p-10 md:px-14 rounded-tl-[50px] md:rounded-tl-[100px] rounded-br-[50px] md:rounded-br-[100px] shadow-md border">
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold py-2 mt-5 text-center text-purple-950">
             Welcome to <span className='text-blue-700'>AlumniBuzz!</span>
           </h3>

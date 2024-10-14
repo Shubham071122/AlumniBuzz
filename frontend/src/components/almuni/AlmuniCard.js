@@ -12,7 +12,7 @@ function AlumniCard({
 }) {
   return (
     <>
-      <div className="bg-white border shadow-lg rounded-3xl p-5">
+      <div className="bg-white border shadow-sm rounded-3xl p-5">
         <img
           src={image_url}
           alt={`${name}'s image`}

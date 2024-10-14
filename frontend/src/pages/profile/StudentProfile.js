@@ -51,7 +51,7 @@ function StudentProfile() {
             <Breadcrumbs />
           </div>
           {/* Left side: Profile section */}
-          <div className="w-full lg:w-1/3 bg-white p-6 rounded-3xl shadow-md sm:sticky sm:top-0 h-auto sm:h-[80vh]">
+          <div className="w-full lg:w-1/3 bg-white p-6 rounded-3xl shadow-sm border sm:sticky sm:top-0 h-auto sm:h-[80vh]">
             <div className="w-full flex flex-col items-center justify-center ">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy5Kp7mr110eb2v36-XoZf1OMOqkDhYgfjhA&s"
@@ -121,7 +121,7 @@ function StudentProfile() {
             </div>
 
             {/* About section */}
-            <div className="bg-white p-6 rounded-3xl shadow-md">
+            <div className="bg-white p-6 rounded-3xl shadow-sm border ">
               <h3 className="text-xl font-bold text-purple-900">About</h3>
               <p className="text-gray-600 mt-3">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -129,23 +129,24 @@ function StudentProfile() {
             </div>
 
             {/* Job planning section */}
-            <div className="bg-white p-6 rounded-3xl shadow-md">
+            <div className="bg-white p-6 rounded-3xl shadow-sm border ">
               <h3 className="text-xl font-bold text-purple-900">
                 Job Planning
               </h3>
               <p className="text-gray-600 mt-3">
                 Career goals, aspirations, and future planning.
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
               </p>
             </div>
 
             {/* Additional sections */}
-            <div className="bg-white p-6 rounded-3xl shadow-md">
+            <div className="bg-white p-6 rounded-3xl shadow-sm border ">
               <h3 className="text-xl font-bold text-purple-900">
                 Projects & Achievements
               </h3>
               <p className="text-gray-600 mt-3">
                 Detailed information about alumni's work, projects, and key
-                achievements.
+                achievements.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
               </p>
             </div>
           </div>

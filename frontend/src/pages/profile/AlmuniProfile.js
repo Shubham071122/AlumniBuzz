@@ -51,7 +51,7 @@ function AlumniProfile() {
             <Breadcrumbs />
           </div>
           {/* Left side: Profile section */}
-          <div className="w-full lg:w-1/3 bg-white p-6 rounded-3xl shadow-md lg:sticky lg:top-0 h-auto sm:h-[80vh]">
+          <div className="w-full lg:w-1/3 bg-white p-6 rounded-3xl shadow-sm lg:sticky lg:top-0 h-auto sm:h-[80vh] border">
             <div className="w-full flex flex-col items-center justify-center ">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy5Kp7mr110eb2v36-XoZf1OMOqkDhYgfjhA&s"
@@ -126,7 +126,7 @@ function AlumniProfile() {
               <AlumniAvailability/>
 
             {/* About section */}
-            <div className="bg-white p-6 rounded-3xl shadow-md">
+            <div className="bg-white p-6 rounded-3xl shadow-sm border">
               <h3 className="text-xl font-bold text-purple-900">About</h3>
               <p className="text-gray-600 mt-3">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -143,7 +143,7 @@ function AlumniProfile() {
             </div>
 
             {/* Job planning section */}
-            <div className="bg-white p-6 rounded-3xl shadow-md">
+            <div className="bg-white p-6 rounded-3xl shadow-sm border">
               <h3 className="text-xl font-bold text-purple-900">
                 Job Planning
               </h3>
@@ -162,7 +162,7 @@ function AlumniProfile() {
             </div>
 
             {/* Additional sections */}
-            <div className="bg-white p-6 rounded-3xl shadow-md">
+            <div className="bg-white p-6 rounded-3xl shadow-sm border">
               <h3 className="text-xl font-bold text-purple-900">
                 Projects & Achievements
               </h3>

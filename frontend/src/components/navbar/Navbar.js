@@ -129,7 +129,7 @@ function Navbar() {
             <input
               type="text"
               placeholder="Search..."
-              className="w-full px-4 py-[5px] border-2 border-purple-400 outline-none rounded-full"
+              className="w-[85%] px-4 py-[5px] border-2 border-purple-400 outline-none rounded-full"
             />
             <button className="text-white font-bold text-lg p-2 rounded-full bg-purple-400 navani">
               <IoSearch className="text-2xl" />
@@ -181,7 +181,7 @@ function Navbar() {
       >
         <div className="flex flex-col h-full p-6">
           <button
-            className="self-end mb-4 text-2xl text-purple-500 hover:text-purple-800"
+            className="self-end mb-4 text-2xl text-purple-500 hover:text-purple-800 "
             onClick={toggleMenu}
           >
             &times;
