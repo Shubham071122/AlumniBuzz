@@ -87,7 +87,7 @@ function Navbar() {
         className={`w-full ${
           !isSearchActive ? 'flex' : 'block'
         } py-2 sm:py-4 px-5 sm:px-10 items-center justify-between bg-white sticky top-0 z-20 ${
-          isScrolled || isSearchActive ? 'shadow-lg' : ''
+          isScrolled || isSearchActive ? 'shadow-md' : ''
         } transition-all duration-300`}
       >
         <div className="flex items-center justify-start gap-0 sm:gap-5">
@@ -103,9 +103,7 @@ function Navbar() {
           {/* Search Bar - Left side  on large screens */}
           {isScreenLarge && isScrolled && (
             <div
-              className={`w-full sm:w-auto flex items-center justify-between gap-2 ${
-                isSearchActive ? 'block' : 'hidden sm:flex'
-              } transition-all duration-300`}
+              className={`w-full sm:w-auto flex items-center justify-between gap-2 transition-all duration-300`}
               ref={searchRef}
             >
               <input
@@ -123,7 +121,7 @@ function Navbar() {
           <div
             className={`w-full flex items-center justify-between gap-2 ${
               isSearchActive ? 'flex' : 'hidden'
-            } transition-all duration-300`}
+            } transition-transform duration-300`}
             ref={searchRef}
           >
             <input
@@ -175,7 +173,7 @@ function Navbar() {
       {/* Hamburger Menu - Sliding from the left */}
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full w-[250px] bg-gray-50 z-50 transform ${
+        className={`fixed top-0 right-0 h-full w-[250px] bg-red-500 z-50 ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         } transition-transform duration-300 shadow-lg `}
       >

@@ -35,7 +35,7 @@ function AlumniProfile() {
   }, [lastScrollY]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-purple-50 ">
+    <div className="min-h-screen flex flex-col bg-purple-50 z-0">
       {/* Conditionally render Navbar based on scroll */}
       <div
         className={`fixed top-0 left-0 w-full z-30 transition-transform duration-200 ${
