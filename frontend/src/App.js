@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import Loader from './components/loader/Loader';
 import StudentProfile from './pages/profile/StudentProfile';
 import PageNotfound from './pages/404Page/PageNotfound';
+import HomeLayout from './layouts/HomeLayout';
 
 function App() {
   const [loading, setLoading] = useState(true); // Loader state

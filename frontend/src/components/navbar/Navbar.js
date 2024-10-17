@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { IoSearch } from 'react-icons/io5';
 import { FaBars } from 'react-icons/fa';
 import './Navbar.css';
+import logo from '../../assets/images/logo.webp';
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -93,9 +94,10 @@ function Navbar() {
         <div className="flex items-center justify-start gap-0 sm:gap-5">
           {/* Company name, hidden when search is active */}
           {!isSearchActive && (
-            <div className="flex items-center justify-center">
+            <div className="flex items-end justify-center gap-2">
+              <img src={logo} alt='logo' className='w-10 h-10' />
               <h3 className="text-lg sm:text-2xl font-bold text-purple-800">
-                Alumni Buzz
+                Alumnibuzz
               </h3>
             </div>
           )}
