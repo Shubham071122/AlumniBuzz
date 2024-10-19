@@ -45,7 +45,7 @@ function SignUpPage() {
     <>
       <div className="w-full min-h-screen flex justify-center items-center bg-gradient-to-r from-purple-300 to-violet-400 p-4 sm:p-10">
         <div className="w-full max-w-md bg-purple-100 flex flex-col items-center justify-center py-10 px-8 sm:px-14 gap-4 rounded-xl shadow-md">
-          <h2 className="text-3xl text-violet-800 font-bold">Alumni Buzz</h2>
+          <h2 className="text-3xl text-violet-800 font-bold">CampusBuzz</h2>
           <h3 className="text-3xl text-black font-bold mb-5">Sign Up</h3>
 
           <input

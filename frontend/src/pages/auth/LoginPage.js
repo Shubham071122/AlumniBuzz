@@ -18,7 +18,7 @@ function LoginPage() {
     <>
       <div className="w-full min-h-screen flex justify-center items-center bg-gradient-to-r from-purple-300 to-violet-400 px-4 sm:px-0">
         <div className="w-full max-w-[90%] sm:max-w-[75%] md:max-w-[50%] lg:max-w-[40%] xl:max-w-[30%] bg-purple-100 flex flex-col items-center justify-center py-10 px-6 sm:px-8 md:px-14 gap-4 rounded-xl shadow-md">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl text-violet-800 font-bold">Alumni Buzz</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl text-violet-800 font-bold">CampusBuzz</h2>
           <h3 className="text-xl sm:text-2xl lg:text-3xl text-black font-bold mb-5">Log In</h3>
           <input
             type="email"

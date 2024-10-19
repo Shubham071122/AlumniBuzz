@@ -19,7 +19,7 @@ function Footer() {
               <p>Our commitment</p>
               <p>Terms & Conditions</p>
               <p>Privacy Policy</p>
-              <p>Alumni Buzz around the world</p>
+              <p>CampusBuzz around the world</p>
               <p>Meeting</p>
             </div>
             {/* All Subjects Section */}
@@ -63,7 +63,7 @@ function Footer() {
 
         {/* Footer Text */}
         <p className="text-gray-500 text-center text-xs sm:text-sm">
-          © 2024. All rights reserved by Alumni Buzz
+          © 2024. All rights reserved by CampusBuzz
         </p>
       </MaxwidthXL>
     </div>
