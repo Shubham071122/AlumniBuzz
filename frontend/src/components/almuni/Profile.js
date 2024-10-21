@@ -6,6 +6,7 @@ import { FaSpinner } from 'react-icons/fa';
 import { MdOutlineModeEditOutline } from 'react-icons/md';
 import MaxwidthXL from '../../ScreenSizes/MaxwidthXL';
 import Footer from '../footer/Footer';
+import AlumniSkills from './AlumniSkills';
 
 const Profile = () => {
   const [progress, setProgress] = useState(0);
@@ -333,14 +334,16 @@ const Profile = () => {
                 }
               />
             </div>
+              <AlumniSkills/>
             <div>
-              <label className="text-gray-600 font-medium">Skills</label>
-              <textarea
-                placeholder="Skills"
+              <label className="text-gray-600 font-medium">Ex-Company</label>
+              <input
+                type="text"
+                placeholder="Ex-Company"
                 className="border p-3 rounded-md w-full"
-                value={jobInfo.skills}
+                value={jobInfo.exCompany}
                 onChange={(e) =>
-                  setJobInfo({ ...jobInfo, skills: e.target.value })
+                  setJobInfo({ ...jobInfo, exCompany: e.target.value })
                 }
               />
             </div>
@@ -354,18 +357,6 @@ const Profile = () => {
                 value={jobInfo.workExperience}
                 onChange={(e) =>
                   setJobInfo({ ...jobInfo, workExperience: e.target.value })
-                }
-              />
-            </div>
-            <div>
-              <label className="text-gray-600 font-medium">Ex-Company</label>
-              <input
-                type="text"
-                placeholder="Ex-Company"
-                className="border p-3 rounded-md w-full"
-                value={jobInfo.exCompany}
-                onChange={(e) =>
-                  setJobInfo({ ...jobInfo, exCompany: e.target.value })
                 }
               />
             </div>
