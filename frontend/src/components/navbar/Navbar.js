@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { IoSearch } from 'react-icons/io5';
 import { FaBars } from 'react-icons/fa';
 import './Navbar.css';
-import logo from '../../assets/images/logo2.png';
+import logo from '../../assets/images/logo3.png';
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);

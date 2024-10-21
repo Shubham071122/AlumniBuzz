@@ -44,14 +44,14 @@ function SignUpPage() {
   return (
     <>
       <div className="w-full min-h-screen flex justify-center items-center bg-gradient-to-r from-purple-300 to-violet-400 p-4 sm:p-10">
-        <div className="w-full max-w-md bg-purple-100 flex flex-col items-center justify-center py-10 px-8 sm:px-14 gap-4 rounded-xl shadow-md">
+        <div className="w-full max-w-md bg-purple-100 flex flex-col items-center justify-center py-10 px-6 sm:px-10 gap-4 rounded-xl shadow-md">
           <h2 className="text-3xl text-violet-800 font-bold">CampusBuzz</h2>
           <h3 className="text-3xl text-black font-bold mb-5">Sign Up</h3>
 
           <input
             type="text"
             placeholder="Full Name"
-            className="w-full px-4 py-4 text-lg text-black font-semibold outline-none rounded-xl"
+            className="w-full px-4 py-4 text-lg text-black font-med outline-none rounded-xl"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -60,7 +60,7 @@ function SignUpPage() {
           <input
             type="email"
             placeholder="Email"
-            className="w-full px-4 py-4 text-lg text-black font-semibold outline-none rounded-xl"
+            className="w-full px-4 py-4 text-lg text-black font-med outline-none rounded-xl"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -70,7 +70,7 @@ function SignUpPage() {
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="Password"
-              className="w-full px-4 py-4 text-lg text-black font-semibold outline-none rounded-xl"
+              className="w-full px-4 py-4 text-lg text-black font-med outline-none rounded-xl"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -89,27 +89,27 @@ function SignUpPage() {
           {errors.password && <p className="w-full text-red-600 text-start -mt-3 px-2 italic">{errors.password}</p>}
 
           <select
-            className="w-full px-4 py-4 text-lg text-black font-semibold outline-none rounded-xl appearance-none relative bg-white border border-gray-300 focus:border-violet-500 pr-12"
+            className="w-full px-4 py-4 text-lg text-black font-med outline-none rounded-xl appearance-none relative bg-white border border-gray-300 focus:border-violet-500 pr-12"
             value={userType}
             onChange={(e) => setUserType(e.target.value)}
           >
-            <option value="student" className="text-black font-semibold">
+            <option value="student" className="text-black font-med">
               Student
             </option>
-            <option value="alumni" className="text-black font-semibold">
+            <option value="alumni" className="text-black font-med">
               Alumni
             </option>
           </select>
 
           <button
-            className="w-full px-4 py-4 text-lg bg-violet-700 text-white font-semibold rounded-xl hover:bg-violet-800 transition-all duration-75 ease-in-out mt-10"
+            className="w-full px-4 py-4 text-lg bg-violet-700 text-white font-med rounded-xl hover:bg-violet-800 transition-all duration-75 ease-in-out mt-10"
             onClick={handleSignUp}
           >
             Sign Up
           </button>
 
           <p>or</p>
-          <button className="w-full flex items-center px-6 py-3 text-lg bg-gray-300 text-black font-semibold rounded-xl hover:bg-gray-400 transition-all duration-75 ease-in-out">
+          <button className="w-full flex items-center px-6 py-3 text-lg bg-gray-300 text-black font-med rounded-xl hover:bg-gray-400 transition-all duration-75 ease-in-out">
             <span>
               <FcGoogle className="text-4xl" />
             </span>
@@ -117,7 +117,7 @@ function SignUpPage() {
           </button>
           <p className="text-gray-400 font-medium">
             Already have an account?{' '}
-            <Link to="/login" className="text-black font-medium">Log In</Link>
+            <Link to="/login" className="text-black font-medium">SignIn</Link>
           </p>
         </div>
       </div>
