@@ -1,85 +1,217 @@
 import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import TimePicker from 'react-time-picker';
-import 'react-calendar/dist/Calendar.css'; 
-import 'react-time-picker/dist/TimePicker.css'; 
+import Select from 'react-select';
+import moment from 'moment-timezone';
+import MaxwidthXL from '../../ScreenSizes/MaxwidthXL';
+import { MdOutlineLocationOn } from 'react-icons/md';
+import { FiCalendar } from 'react-icons/fi';
+import { IoVideocamOutline } from 'react-icons/io5';
+import meetlogo from '../../assets/images/google-meet.webp';
+import zoomlogo from '../../assets/images/Zoom.png';
+import Schedule from './Schedule';
 
 const Availability = () => {
-  const [date, setDate] = useState(new Date());
-  const [timeSlots, setTimeSlots] = useState([]);
-  const [selectedTime, setSelectedTime] = useState('10:00'); 
-  const [availableTimes, setAvailableTimes] = useState([]);
+  const [timeZone, setTimeZone] = useState('');
+  const [duration, setDuration] = useState('1 week');
+  const [meetingMode, setMeetingMode] = useState('');
 
-  const handleDateChange = (date) => {
-    setDate(date);
-    setAvailableTimes([]); 
-  };
+  const timezoneOptions = moment.tz.names().map((tz) => ({
+    value: tz,
+    label: tz,
+  }));
 
-  const addTimeSlot = () => {
-    if (!timeSlots.includes(selectedTime)) {
-      setTimeSlots((prevSlots) => [...prevSlots, selectedTime]);
-      setAvailableTimes((prevTimes) => [...prevTimes, { date, time: selectedTime }]);
-      setSelectedTime('10:00'); 
-    }
-  };
+  const durationOptions = [
+    { value: '', label: 'Select' },
+    { value: '1w', label: '1 Week' },
+    { value: '2w', label: '2 Weeks' },
+    { value: '3w', label: '3 Weeks' },
+    { value: '1m', label: '1 Month' },
+    { value: '2m', label: '2 Months' },
+  ];
 
-  const removeTimeSlot = (timeToRemove) => {
-    setTimeSlots((prevSlots) => prevSlots.filter((time) => time !== timeToRemove));
-    setAvailableTimes((prevTimes) => prevTimes.filter((slot) => slot.time !== timeToRemove));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here, e.g., send data to backend
   };
 
   return (
-    <div className="p-8 bg-gray-50 min-h-screen">
-      <div className="max-w-xl mx-auto bg-white shadow-lg rounded-3xl p-8">
-        <h2 className="text-2xl font-bold text-purple-900 mb-6 text-center">Select Your Availability</h2>
+    <div className="w-full min-h-screen">
+      <MaxwidthXL>
+        <div>
+          <h1 className="text-4xl font-bold text-purple-800">Availability</h1>
+        </div>
+        <div className="w-[100%] mx-auto h-[1px] bg-gray-300 my-4"></div>
+        <div>
+          <h2 className="text-3xl font-medium">Calendar</h2>
+          <div>
+            {/* *** */}
+            <div className="w-full flex items-center gap-48 my-5 border-b py-5">
+              {/* lables */}
+              <div className="flex gap-4">
+                <MdOutlineLocationOn size={22} className="mt-1" />
+                <div className="w-full flex flex-col">
+                  <p className="text-lg font-semibold">TimeZone</p>
+                  <p className="text-gray-500">
+                    Required for timely communications
+                  </p>
+                </div>
+              </div>
+              {/* Input box */}
+              {/* <div>
+                <input
+                  placeholder="TimeZone"
+                  className="w-72 border-[1px] border-gray-400 rounded-lg p-2 hover:border-[1.5px] hover:border-black"
+                />
+              </div> */}
+              <div className="w-72">
+                <Select
+                  options={timezoneOptions}
+                  placeholder="Select TimeZone"
+                  className="text-gray-700"
+                  styles={{
+                    control: (provided) => ({
+                      ...provided,
+                      borderColor: '#cbd5e0',
+                      padding: '2px',
+                      borderRadius: '0.5rem',
+                      '&:hover': {
+                        borderColor: 'black',
+                      },
+                    }),
+                    menu: (provided) => ({
+                      ...provided,
+                      color: 'black',
+                      backgroundColor: 'white',
+                    }),
+                    placeholder: (provided) => ({
+                      ...provided,
+                      color: '#4a5568',
+                    }),
+                  }}
+                />
+              </div>
+            </div>
+            {/* *** */}
+            <div className="w-full flex items-center gap-40 my-5 border-b py-5">
+              {/* lables */}
+              <div className="flex gap-4">
+                <FiCalendar size={22} className="mt-1" />
+                <div className="w-full flex flex-col">
+                  <p className="text-lg font-semibold">Duration</p>
+                  <p className="text-gray-500">
+                    How far in the future can attendees book
+                  </p>
+                </div>
+              </div>
+              {/* Input box */}
+              {/* <div>
+                <select className="w-72 border-[1px] border-gray-400 rounded-lg p-2 hover:border-black text-gray-700 bg-white ">
+                  <option value="">select</option>
+                  <option value="1w">1 Week</option>
+                  <option value="2w">1 Week</option>
+                  <option value="3w">3 Week</option>
+                  <option value="1m">1 Month</option>
+                  <option value="1w">2 Month</option>
+                </select>
+              </div> */}
+              <div className="w-72">
+                <Select
+                  options={durationOptions}
+                  placeholder="Select"
+                  className="text-gray-700"
+                  styles={{
+                    control: (provided) => ({
+                      ...provided,
+                      borderColor: '#cbd5e0',
+                      padding: '2px',
+                      borderRadius: '0.5rem',
+                      '&:hover': {
+                        borderColor: 'black',
+                      },
+                    }),
+                    menu: (provided) => ({
+                      ...provided,
+                      color: 'black',
+                      backgroundColor: 'white',
+                    }),
+                    placeholder: (provided) => ({
+                      ...provided,
+                      color: '#4a5568',
+                    }),
+                  }}
+                />
+              </div>
+            </div>
+            {/* *** */}
+            <div className="w-full flex items-center gap-40 my-5 border-b py-5">
+              {/* lables */}
+              <div className="flex gap-4">
+                <IoVideocamOutline size={22} className="mt-1" />
+                <div className="w-full flex flex-col">
+                  <p className="text-lg font-semibold">Meeting Location</p>
+                  <p className="text-gray-500">
+                    Use your preferred video conferencing tool for 1:1 meetings
+                  </p>
+                </div>
+              </div>
+              {/* Input box */}
+              <div className="flex gap-10">
+                {/* Google Meet Option */}
+                <label
+                  className={`flex items-center cursor-pointer gap-2 ${
+                    meetingMode === 'googleMeet'
+                      ? 'text-purple-700 font-medium'
+                      : 'text-gray-700'
+                  }`}
+                  onClick={() => setMeetingMode('googleMeet')}
+                >
+                  <input
+                    type="radio"
+                    name="meetingMode"
+                    value="googleMeet"
+                    checked={meetingMode === 'googleMeet'}
+                    onChange={() => setMeetingMode('googleMeet')}
+                    className="cursor-pointer mr-4 w-4 h-4"
+                  />
+                  <img src={meetlogo} className="w-10 h-9 mr-1" />
+                  Google Meet
+                </label>
 
-        {/* Calendar for date selection */}
-        <div className="mb-6">
-          <Calendar
-            onChange={handleDateChange}
-            value={date}
-            className="border-0 mx-auto"
-          />
+                {/* Zoom Option */}
+                <label
+                  className={`flex items-center cursor-pointer gap-2 ${
+                    meetingMode === 'zoom'
+                      ? 'text-purple-700 font-medium'
+                      : 'text-gray-700'
+                  }`}
+                  onClick={() => setMeetingMode('zoom')}
+                >
+                  <input
+                    type="radio"
+                    name="meetingMode"
+                    value="zoom"
+                    checked={meetingMode === 'zoom'}
+                    onChange={() => setMeetingMode('zoom')}
+                    className="cursor-pointer w-4 h-4"
+                  />
+                  <img src={zoomlogo} className="w-16 h-9 -mr-3" />
+                  Zoom
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Time Picker for selecting time slots */}
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
-          <TimePicker
-            onChange={setSelectedTime}
-            value={selectedTime}
-            className="w-40 p-2 border border-gray-300 rounded-md shadow-sm"
-            clockClassName="hidden" 
-          />
-          <button
-            onClick={addTimeSlot}
-            className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md"
-          >
-            Add Time Slot
+        {/* Schedule */}
+        <div className="mt-10">
+          <h2 className="text-3xl font-medium ">Schedule</h2>
+          <Schedule />
+        </div>
+        <div className="w-full flex justify-end items-center mt-8">
+          <button className="bg-violet-800 text-white px-7 py-2 rounded-lg hover:bg-violet-700">
+            Save
           </button>
         </div>
-
-        {/* Display selected time slots */}
-        <div className="bg-gray-100 p-4 rounded-lg shadow-inner mb-6">
-          <h3 className="text-lg font-semibold text-gray-700 mb-4">Selected Time Slots</h3>
-          {timeSlots.length > 0 ? (
-            <ul className="space-y-4">
-              {timeSlots.map((time, index) => (
-                <li key={index} className="flex justify-between items-center bg-white p-4 rounded-lg shadow-md">
-                  <span className="text-gray-700">{`${time} on ${date.toLocaleDateString()}`}</span>
-                  <button
-                    onClick={() => removeTimeSlot(time)}
-                    className="text-red-600 hover:text-red-800 font-semibold"
-                  >
-                    Remove
-                  </button>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-gray-500">No time slots selected yet.</p>
-          )}
-        </div>
-      </div>
+      </MaxwidthXL>
     </div>
   );
 };

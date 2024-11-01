@@ -406,10 +406,9 @@ function Dashboard() {
 
   return (
     <div className="w-full h-screen overflow-hidden">
-      <Navbar />
       <div className="flex h-full">
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-        <div className="flex-1 p-6 pb-20 bg-purple-50 overflow-y-auto">
+        <div className="flex-1 p-6 pb-20 bg-white overflow-y-auto">
           {renderContent()}
         </div>
       </div>
