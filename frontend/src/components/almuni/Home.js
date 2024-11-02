@@ -43,7 +43,7 @@ function Home() {
           {/* Next Meeting Section */}
           <div className="w-full">
             <p className="pb-3 pl-1 text-lg font-medium">Next Meeting</p>
-            <div className="w-96 h-64 bg-red-300 border rounded-3xl p-4">
+            <div className="w-94 sm:w-96 h-64 bg-red-300 border rounded-3xl p-4">
               <Link
                 to="#"
                 className="block w-full px-2 py-2 bg-gray-100 text-center rounded-md text-black font-medium hover:bg-gray-200 transition-colors"

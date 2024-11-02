@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/images/logo3.png';
+import logo from '../../../assets/images/logo3.png';
 import { FiHome } from "react-icons/fi";
 import { FaRegEnvelope,FaRegComments,FaRegCalendarAlt,FaRegUser    } from "react-icons/fa";
 

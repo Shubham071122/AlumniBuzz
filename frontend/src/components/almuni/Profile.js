@@ -87,11 +87,11 @@ const Profile = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen px-20">
+    <div className="relative w-full min-h-screen">
       {/* Info section right */}
       {/* <div className="w-full lg:w-2/3 overflow-y-auto flex flex-col gap-4"> */}
       <MaxwidthXL>
-        <div className="w-full flex items-center justify-between mb-10">
+        <div className="w-full flex flex-col sm:flex-row items-center justify-between mb-10">
           {/* Image Upload */}
           <div className="w-44 h-44 relative rounded-full border-1 border-white shadow-md bg-gray-300">
             {avatarLoading ? (
@@ -119,24 +119,20 @@ const Profile = () => {
             </div>
           </div>
           {/* Progress Bar */}
-          <div className="w-[70%] p-6 overflow-y-auto lg:overflow-hidden flex flex-col gap-4">
-            <h2 className="text-purple-900 text-lg font-bold">
-              Profile Completion
-            </h2>
+          <div className="w-full lg:w-[70%] p-4 lg:p-6 overflow-y-auto lg:overflow-hidden flex flex-col gap-4">
+            <h2 className="text-purple-900 text-lg font-bold">Profile Completion</h2>
             <div className="w-full bg-gray-300 h-4 rounded-md mt-2">
               <div
                 className="bg-purple-700 h-4 rounded-md transition-all duration-300"
                 style={{ width: `${progress}%` }}
               ></div>
             </div>
-            <p className="text-gray-600 mt-2">
-              {progress.toFixed(0)}% Complete
-            </p>
+            <p className="text-gray-600 mt-2">{progress.toFixed(0)}% Complete</p>
           </div>
         </div>
 
         {/* Personal Information */}
-        <div className="bg-white shadow-sm p-6 rounded-3xl mb-8 border">
+        <div className="bg-white shadow-sm p-4 sm:p-6 rounded-3xl mb-8 border">
           <h2 className="text-purple-900 text-lg font-bold mb-4">
             Personal Information
           </h2>
@@ -230,7 +226,7 @@ const Profile = () => {
         </div>
 
         {/* Academic Information */}
-        <div className="bg-white shadow-sm p-6 rounded-3xl mb-8 border">
+        <div className="bg-white shadow-sm p-4 sm:p-6 rounded-3xl mb-8 border">
           <h2 className="text-purple-900 text-lg font-bold mb-4">
             Academic Information
           </h2>
@@ -303,7 +299,7 @@ const Profile = () => {
         </div>
 
         {/* Job Information */}
-        <div className="bg-white shadow-sm p-6 rounded-3xl mb-8 border">
+        <div className="bg-white shadow-sm p-4 sm:p-6 rounded-3xl mb-8 border">
           <h2 className="text-purple-900 text-lg font-bold mb-4">
             Job Experience
           </h2>
@@ -364,7 +360,7 @@ const Profile = () => {
         </div>
 
         {/* Extra Activities */}
-        <div className="bg-white shadow-sm p-6 rounded-3xl mb-8 border">
+        <div className="bg-white shadow-sm p-4 sm:p-6 rounded-3xl mb-8 border">
           <h2 className="text-purple-900 text-lg font-bold mb-4">
             Extra Activities
           </h2>
@@ -378,7 +374,7 @@ const Profile = () => {
         </div>
 
         {/* About Section */}
-        <div className="bg-white shadow-sm p-6 rounded-3xl mb-8 border">
+        <div className="bg-white shadow-sm p-4 sm:p-6 rounded-3xl mb-8 border">
           <h2 className="text-purple-900 text-lg font-bold mb-4">About Me</h2>
           <label className="text-gray-600 font-medium">About Me</label>
           <textarea
@@ -390,7 +386,7 @@ const Profile = () => {
         </div>
 
         {/* Future Plans */}
-        <div className="bg-white shadow-sm p-6 rounded-3xl mb-14 border">
+        <div className="bg-white shadow-sm p-4 sm:p-6 rounded-3xl mb-14 border">
           <h2 className="text-purple-900 text-lg font-bold mb-4">
             Future Plans
           </h2>
@@ -404,7 +400,7 @@ const Profile = () => {
         </div>
 
         {/* Save button */}
-        <button className="absolute top-0 right-28 px-8 py-2 bg-purple-700 text-white border rounded-xl hover:bg-purple-600">
+        <button className="absolute right-4 top-80 md:top-5 md:right-10 lg:top-2 lg:right-16 px-8 py-2 bg-purple-700 text-white border rounded-xl hover:bg-purple-600">
           Update
         </button>
       </MaxwidthXL>

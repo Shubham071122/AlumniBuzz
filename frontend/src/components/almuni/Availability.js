@@ -34,7 +34,7 @@ const Availability = () => {
   };
 
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen overflow-y-auto">
       <MaxwidthXL>
         <div>
           <h1 className="text-4xl font-bold text-purple-800">Availability</h1>
@@ -44,10 +44,10 @@ const Availability = () => {
           <h2 className="text-3xl font-medium">Calendar</h2>
           <div>
             {/* *** */}
-            <div className="w-full flex items-center gap-48 my-5 border-b py-5">
+            <div className="w-full flex flex-col sm:flex-row items-center gap-4 sm:gap-48 my-5 -ml-8 sm:ml-0 border-b py-5">
               {/* lables */}
               <div className="flex gap-4">
-                <MdOutlineLocationOn size={22} className="mt-1" />
+                <MdOutlineLocationOn size={26} className="mt-1" />
                 <div className="w-full flex flex-col">
                   <p className="text-lg font-semibold">TimeZone</p>
                   <p className="text-gray-500">
@@ -56,13 +56,7 @@ const Availability = () => {
                 </div>
               </div>
               {/* Input box */}
-              {/* <div>
-                <input
-                  placeholder="TimeZone"
-                  className="w-72 border-[1px] border-gray-400 rounded-lg p-2 hover:border-[1.5px] hover:border-black"
-                />
-              </div> */}
-              <div className="w-72">
+              <div className="w-72 ml-14 md:ml-16 sm:ml-0 ">
                 <Select
                   options={timezoneOptions}
                   placeholder="Select TimeZone"
@@ -91,7 +85,7 @@ const Availability = () => {
               </div>
             </div>
             {/* *** */}
-            <div className="w-full flex items-center gap-40 my-5 border-b py-5">
+            <div className="w-full flex flex-col sm:flex-row items-center gap-4 sm:gap-40 my-3 sm:my-5 -ml-4 sm:ml-0 border-b py-5">
               {/* lables */}
               <div className="flex gap-4">
                 <FiCalendar size={22} className="mt-1" />
@@ -103,17 +97,7 @@ const Availability = () => {
                 </div>
               </div>
               {/* Input box */}
-              {/* <div>
-                <select className="w-72 border-[1px] border-gray-400 rounded-lg p-2 hover:border-black text-gray-700 bg-white ">
-                  <option value="">select</option>
-                  <option value="1w">1 Week</option>
-                  <option value="2w">1 Week</option>
-                  <option value="3w">3 Week</option>
-                  <option value="1m">1 Month</option>
-                  <option value="1w">2 Month</option>
-                </select>
-              </div> */}
-              <div className="w-72">
+              <div className="w-72 ml-6 md:ml-16 sm:ml-0">
                 <Select
                   options={durationOptions}
                   placeholder="Select"
@@ -142,7 +126,7 @@ const Availability = () => {
               </div>
             </div>
             {/* *** */}
-            <div className="w-full flex items-center gap-40 my-5 border-b py-5">
+            <div className="w-full flex flex-col sm:flex-row items-center gap-4 sm:gap-40 my-5 border-b py-5">
               {/* lables */}
               <div className="flex gap-4">
                 <IoVideocamOutline size={22} className="mt-1" />
@@ -154,7 +138,7 @@ const Availability = () => {
                 </div>
               </div>
               {/* Input box */}
-              <div className="flex gap-10">
+              <div className="flex gap-10 flex-col sm:flex-row -ml-28 sm:ml-0">
                 {/* Google Meet Option */}
                 <label
                   className={`flex items-center cursor-pointer gap-2 ${

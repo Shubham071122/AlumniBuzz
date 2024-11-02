@@ -34,3 +34,7 @@ body {
   50%   {transform:scaleY(-1) rotate(0deg)}
   100%  {transform:scaleY(-1) rotate(-135deg)}
 }
+
+.shadow-top {
+  box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.1); 
+}
