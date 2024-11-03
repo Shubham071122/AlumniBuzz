@@ -7,6 +7,7 @@ import MessageRequest from '../../components/almuni/MessageRequest';
 import Chat from '../../components/almuni/Chat';
 import Navbar from '../../components/navbar/Navbar';
 import Bottombar from '../../components/almuni/navigationBar/Bottombar';
+import Navbar2 from '../../components/navbar/Navbar2';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('home');
@@ -37,11 +38,12 @@ function Dashboard() {
         </div>
         {/* Main content area */}
         <div className="flex-1 w-full lg:p-6 pb-20 bg-white overflow-y-auto">
+          <Navbar2 />
           {renderContent()}
         </div>
       </div>
       {/* Bottombar visible only on mobile and tablet screens */}
-      <div className="w-full  lg:hidden">
+      <div className="w-full lg:hidden">
         <Bottombar activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
     </div>

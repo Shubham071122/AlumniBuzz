@@ -138,7 +138,7 @@ const Availability = () => {
                 </div>
               </div>
               {/* Input box */}
-              <div className="flex gap-10 flex-col sm:flex-row -ml-28 sm:ml-0">
+              <div className="flex gap-10 flex-col sm:flex-row -ml-28 md:-ml-16 lg:ml-0">
                 {/* Google Meet Option */}
                 <label
                   className={`flex items-center cursor-pointer gap-2 ${

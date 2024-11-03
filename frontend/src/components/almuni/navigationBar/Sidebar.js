@@ -20,7 +20,7 @@ function Sidebar({ activeTab, setActiveTab }) {
           CampusBuzz
         </h3>
       </div>
-      <div className='w-[90%] mx-auto h-[1px] bg-gray-300 my-4'></div>
+      <div className='w-[90%] mx-auto h-[1px] bg-gray-300 mb-4'></div>
       <div className="w-full h-full p-4">
         <ul className="space-y-4">
           {tabs.map((tab) => (

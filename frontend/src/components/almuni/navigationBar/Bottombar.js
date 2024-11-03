@@ -24,7 +24,7 @@ function Bottombar({ activeTab, setActiveTab }) {
             onClick={() => setActiveTab(tab.key)}
           >
             <span>{tab.icon}</span>
-            <span className="text-center leading-tight break-words">{tab.name}</span>
+            <span className="text-center leading-tight break-words mt-1">{tab.name}</span>
           </li>
         ))}
       </ul>

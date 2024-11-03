@@ -147,7 +147,7 @@ function Schedule() {
                   }),
                 }}
               />
-
+              <p className='text-gray-400'>-</p>
               {/* To Time Slot */}
               <Select
                 options={timeOptionsSelect}
