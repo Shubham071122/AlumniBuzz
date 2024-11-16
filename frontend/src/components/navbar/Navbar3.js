@@ -4,14 +4,18 @@ import { IoSearch } from 'react-icons/io5';
 import { FaBars } from 'react-icons/fa';
 import './Navbar.css';
 import logo from '../../assets/images/logo3.png';
+import { GrCircleQuestion } from 'react-icons/gr';
+import './Navbar.css';
 
-function Navbar() {
+function Navbar3() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isScreenLarge, setIsScreenLarge] = useState(window.innerWidth >= 1024);
   const menuRef = useRef(null);
   const searchRef = useRef(null);
+  const popupRef = useRef(null);
 
   // Track scrolling at start
   useEffect(() => {
@@ -44,6 +48,12 @@ function Navbar() {
     setIsMenuOpen((prev) => !prev);
   };
 
+  // Toggle profile popup
+  const togglePopup = (event) => {
+    event.stopPropagation();
+    setIsPopupOpen((prev) => !prev);
+  };
+
   // Close menu and search bar on outside click or scroll
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -52,6 +62,9 @@ function Navbar() {
       }
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setIsSearchActive(false);
+      }
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setIsPopupOpen(false);
       }
     };
 
@@ -62,6 +75,9 @@ function Navbar() {
       // if (isSearchActive) {
       //   setIsSearchActive(false);
       // }
+      if (isPopupOpen) {
+        setIsPopupOpen(false);
+      }
     };
 
     document.addEventListener('click', handleClickOutside);
@@ -71,7 +87,7 @@ function Navbar() {
       document.removeEventListener('click', handleClickOutside);
       document.removeEventListener('scroll', handleScroll);
     };
-  }, [isMenuOpen, isSearchActive]);
+  }, [isMenuOpen, isSearchActive, isPopupOpen]);
 
   return (
     <>
@@ -86,7 +102,7 @@ function Navbar() {
           {/* Company name, hidden when search is active */}
           {!isSearchActive && (
             <div className="flex items-center justify-center gap-4">
-              <img src={logo} alt='logo' className='w-10 h-10' />
+              <img src={logo} alt="logo" className="w-10 h-10" />
               <h3 className="text-lg sm:text-2xl font-bold text-purple-800 -ml-1">
                 CampusBuzz
               </h3>
@@ -102,7 +118,8 @@ function Navbar() {
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full sm:w-[250px] px-4 py-[5px] border-2 border-purple-400 outline-none rounded-full"
+                className="w-full sm:w-[250px] px-4 py-[5px] border-2 border-purple-400 outline-none rounded-3xl"
+                
               />
               <button className="text-white font-bold text-lg p-2 rounded-full bg-purple-400 navani">
                 <IoSearch className="text-2xl" />
@@ -110,7 +127,7 @@ function Navbar() {
             </div>
           )}
 
-          {/* Search Bar - Full width  on small screens */}
+          {/* Search Bar - Full width  on mobile screens */}
           <div
             className={`w-full flex items-center justify-between gap-2 ${
               isSearchActive ? 'flex' : 'hidden'
@@ -129,12 +146,20 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Hamburger and Search Icons */}
+        {/* Mobile icon Hamburger and Search Icons */}
         {!isSearchActive && (
-          <div className="flex items-center gap-4 sm:hidden">
+          <div className="flex items-center gap-2 sm:gap-4 sm:hidden">
             <button className="text-gray-500 text-2xl" onClick={toggleSearch}>
               <IoSearch />
             </button>
+            {'alumni' === 'alumni' && (
+            <NavLink
+              to="/dashboard"
+              className="bg-gray-600 p-1 px-2 text-white rounded-md"
+            >
+              dashboard
+            </NavLink>
+          )}
             <button
               className="text-purple-700 text-2xl hover:text-purple-800 transition-colors duration-200"
               onClick={toggleMenu}
@@ -144,27 +169,94 @@ function Navbar() {
           </div>
         )}
 
-        {/* Links for larger screens */}
-        <div className="hidden sm:flex gap-5">
-          <NavLink
-            to="/login"
-            className={`font-semibold px-4 py-2 rounded-full navani ${
-              isScrolled ? 'bg-gray-300' : 'bg-transparent'
-            } transition-all duration-300 hover:bg-gray-200`}
-          >
-            Log In
+        {/* Desktop Profile Button */}
+        <div className="hidden sm:flex gap-5 items-center">
+          <NavLink>
+            <GrCircleQuestion size={20} className="hover:text-purple-900" />
           </NavLink>
-          <NavLink
-            to="/signup"
-            className={`font-semibold px-4 py-2 rounded-full navani ${
-              isScrolled ? 'bg-gray-300' : 'bg-transparent'
-            } transition-all duration-300 hover:bg-gray-200`}
-          >
-            Create New
-          </NavLink>
+          {'alumni' === 'alumni' && (
+            <NavLink
+              to="/dashboard"
+              className="bg-gray-600 p-2 px-3 text-white rounded-md"
+            >
+              Go to dashboard
+            </NavLink>
+          )}
+          <button
+            className="w-11 h-11 border-2 rounded-full"
+            onClick={togglePopup}
+          ></button>
+
+          {/* Popup Menu */}
+          {isPopupOpen && (
+            <div
+              ref={popupRef}
+              className="absolute top-full right-0 mt-0 mr-14 w-48 bg-white shadow-lg rounded-lg p-3 
+                 transition-transform transition-opacity duration-300 ease-out 
+                 transform opacity-0 translate-x-full -translate-y-full
+                 animate-[popupSlideIn_0.3s_ease-out_forwards]"
+            >
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `block py-2 px-3 mb-1 rounded-lg text-purple-700 hover:bg-purple-100 ${
+                    isActive ? 'bg-purple-200 text-purple-800' : ''
+                  } transition-colors duration-200`
+                }
+                onClick={() => setIsPopupOpen(false)}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `block py-2 px-3 mb-1 rounded-lg text-purple-700 hover:bg-purple-100 ${
+                    isActive ? 'bg-purple-200 text-purple-800' : ''
+                  } transition-colors duration-200`
+                }
+                onClick={() => setIsPopupOpen(false)}
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/profile"
+                className={({ isActive }) =>
+                  `block py-2 px-3 mb-1 rounded-lg text-purple-700 hover:bg-purple-100 ${
+                    isActive ? 'bg-purple-200 text-purple-800' : ''
+                  } transition-colors duration-200`
+                }
+                onClick={() => setIsPopupOpen(false)}
+              >
+                Profile
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `block py-2 px-3 mb-1 rounded-lg text-purple-700 hover:bg-purple-100 ${
+                    isActive ? 'bg-purple-200 text-purple-800' : ''
+                  } transition-colors duration-200`
+                }
+                onClick={() => setIsPopupOpen(false)}
+              >
+                Contact Us
+              </NavLink>
+              <NavLink
+                to="/logout"
+                className={({ isActive }) =>
+                  `block py-2 px-3 mb-1 rounded-lg text-purple-700 hover:bg-purple-100 ${
+                    isActive ? 'bg-purple-200 text-purple-800' : ''
+                  } transition-colors duration-200`
+                }
+                onClick={() => setIsPopupOpen(false)}
+              >
+                Logout
+              </NavLink>
+            </div>
+          )}
         </div>
       </div>
-      {/* Hamburger Menu - Sliding from the left */}
+
+      {/* Mobile Hamburger Menu - Sliding from the left */}
       <div
         ref={menuRef}
         className={`fixed top-0 right-0 h-full w-[250px] bg-gray-100 z-50 ${
@@ -178,20 +270,6 @@ function Navbar() {
           >
             &times;
           </button>
-          <NavLink
-            to="/login"
-            className="font-semibold mb-6 text-lg text-purple-800 hover:text-purple-600"
-            onClick={toggleMenu}
-          >
-            Log In
-          </NavLink>
-          <NavLink
-            to="/signup"
-            className="font-semibold mb-6 text-lg text-purple-800 hover:text-purple-600"
-            onClick={toggleMenu}
-          >
-            Create New
-          </NavLink>
           <hr className="mb-6" />
           <NavLink
             to="/"
@@ -228,10 +306,17 @@ function Navbar() {
           >
             Help
           </NavLink>
+          <NavLink
+            to="/help"
+            className="font-medium mb-4 text-purple-700 hover:text-purple-500"
+            onClick={toggleMenu}
+          >
+            Logout
+          </NavLink>
         </div>
       </div>
     </>
   );
 }
 
-export default Navbar;
+export default Navbar3;

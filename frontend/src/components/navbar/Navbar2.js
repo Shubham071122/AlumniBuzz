@@ -48,7 +48,7 @@ function Navbar2() {
           <div className='w-full flex justify-between'>
             <input
               type="text"
-              className="w-full px-4 py-2 ml-6 mr-2 rounded-3xl outline-none transition-all duration-300 bg-gray-100 border-[1px]"
+              className="w-full sm:w-96 px-4 py-2 ml-6 mr-2 rounded-3xl outline-none transition-all duration-300 bg-gray-100 border-[1px]"
               placeholder="Search..."
               autoFocus
             />
