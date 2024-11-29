@@ -1,13 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { IoSearch } from 'react-icons/io5';
 import { FaBars } from 'react-icons/fa';
 import './Navbar.css';
 import logo from '../../assets/images/logo3.png';
 import { GrCircleQuestion } from 'react-icons/gr';
 import './Navbar.css';
+import AuthContext from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 function Navbar3() {
+  const {userData,logout} = useContext(AuthContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +19,7 @@ function Navbar3() {
   const menuRef = useRef(null);
   const searchRef = useRef(null);
   const popupRef = useRef(null);
+  const navigate = useNavigate();
 
   // Track scrolling at start
   useEffect(() => {
@@ -35,6 +39,16 @@ function Navbar3() {
       window.removeEventListener('resize', handleScreenWidth);
     };
   }, []);
+
+  //For logout
+  const handleLogoutClick = async() => {
+    setIsPopupOpen(false);
+    const status = await logout();
+    if(status === 200){
+      toast.success("Logout successfully!");
+      navigate("/")
+    }
+  }
 
   // Toggle search input
   const toggleSearch = (event) => {
@@ -174,7 +188,7 @@ function Navbar3() {
           <NavLink>
             <GrCircleQuestion size={20} className="hover:text-purple-900" />
           </NavLink>
-          {'alumni' === 'alumni' && (
+          {userData?.profession === 'mentor' && (
             <NavLink
               to="/dashboard"
               className="bg-gray-600 p-2 px-3 text-white rounded-md"
@@ -240,17 +254,14 @@ function Navbar3() {
               >
                 Contact Us
               </NavLink>
-              <NavLink
-                to="/logout"
-                className={({ isActive }) =>
-                  `block py-2 px-3 mb-1 rounded-lg text-purple-700 hover:bg-purple-100 ${
-                    isActive ? 'bg-purple-200 text-purple-800' : ''
-                  } transition-colors duration-200`
+              <button
+                className={
+                  `w-full text-start py-2 px-3 mb-1 rounded-lg text-purple-700 hover:bg-purple-100 transition-colors duration-200`
                 }
-                onClick={() => setIsPopupOpen(false)}
+                onClick={handleLogoutClick}
               >
                 Logout
-              </NavLink>
+              </button>
             </div>
           )}
         </div>

@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../../context/AuthContext';
+import toast from 'react-hot-toast';
 
 function LoginPage() {
+  const {login} = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async(e) => {
     e.preventDefault();
-
+    const data = await login(email,password);
+    if(data.statusCode === 200){
+      toast.success("Login successfull!");
+      navigate("/")
+    }
+    else{
+      toast.error("Login failed");
+    }
     console.log('Logging in with:', { email, password });
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import MaxwidthXL from '../../ScreenSizes/MaxwidthXL';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
@@ -6,8 +6,11 @@ import { IoSchool, IoLogoLinkedin, IoLogoGithub } from 'react-icons/io5';
 import { PiGearFill } from 'react-icons/pi';
 import Breadcrumbs from '../../components/breadCrumbs/BreadCrumbs';
 import AlumniAvailability from '../../components/almuni/AlumniAvailability';
+import Navbar3 from '../../components/navbar/Navbar3';
+import AuthContext from '../../context/AuthContext';
 
 function AlumniProfile() {
+  const {isAuthenticated} = useContext(AuthContext)
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -42,7 +45,9 @@ function AlumniProfile() {
           showNavbar ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <Navbar />
+        {
+          isAuthenticated ? <Navbar3/> : <Navbar/>
+        }
       </div>
 
       <MaxwidthXL>

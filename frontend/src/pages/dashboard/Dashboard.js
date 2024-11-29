@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Sidebar from '../../components/almuni/navigationBar/Sidebar';
 import Home from '../../components/almuni/Home';
 import Profile from '../../components/almuni/Profile';
@@ -8,9 +8,19 @@ import Chat from '../../components/almuni/Chat';
 import Navbar from '../../components/navbar/Navbar';
 import Bottombar from '../../components/almuni/navigationBar/Bottombar';
 import Navbar2 from '../../components/navbar/Navbar2';
+import AuthContext from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
+  const {userData} = useContext(AuthContext);
   const [activeTab, setActiveTab] = useState('home');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userData?.profession !== 'mentor') {
+      navigate('/'); 
+    }
+  }, [userData, navigate]);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -28,6 +38,8 @@ function Dashboard() {
         return <Home />;
     }
   };
+
+ 
 
   return (
     <div className="w-full h-screen overflow-hidden">

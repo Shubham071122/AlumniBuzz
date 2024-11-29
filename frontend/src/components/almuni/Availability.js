@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Select from 'react-select';
 import moment from 'moment-timezone';
 import MaxwidthXL from '../../ScreenSizes/MaxwidthXL';
@@ -8,11 +8,14 @@ import { IoVideocamOutline } from 'react-icons/io5';
 import meetlogo from '../../assets/images/google-meet.webp';
 import zoomlogo from '../../assets/images/Zoom.png';
 import Schedule from './Schedule';
+import UserContext from '../../context/UserContext';
 
 const Availability = () => {
+  const { createAvailability } = useContext(UserContext);
   const [timeZone, setTimeZone] = useState('');
   const [duration, setDuration] = useState('1 week');
   const [meetingMode, setMeetingMode] = useState('');
+  const [schedule, setSchedule] = useState({});
 
   const timezoneOptions = moment.tz.names().map((tz) => ({
     value: tz,
@@ -28,9 +31,14 @@ const Availability = () => {
     { value: '2m', label: '2 Months' },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here, e.g., send data to backend
+    await createAvailability({
+      timeZone: timeZone.value, 
+      duration: duration.value, 
+      meetingMode,
+      schedule,
+    });
   };
 
   return (
@@ -59,8 +67,10 @@ const Availability = () => {
               <div className="w-72 ml-14 md:ml-16 sm:ml-0 ">
                 <Select
                   options={timezoneOptions}
+                  value={timeZone}
                   placeholder="Select TimeZone"
                   className="text-gray-700"
+                  onChange={(selectedOption) => setTimeZone(selectedOption)}
                   styles={{
                     control: (provided) => ({
                       ...provided,
@@ -100,6 +110,8 @@ const Availability = () => {
               <div className="w-72 ml-6 md:ml-16 sm:ml-0">
                 <Select
                   options={durationOptions}
+                  value={duration}
+                  onChange={(selectedOption) => setDuration(selectedOption)}
                   placeholder="Select"
                   className="text-gray-700"
                   styles={{
@@ -188,10 +200,13 @@ const Availability = () => {
         {/* Schedule */}
         <div className="mt-10">
           <h2 className="text-3xl font-medium ">Schedule</h2>
-          <Schedule />
+          <Schedule schedule={schedule} setSchedule={setSchedule} />
         </div>
         <div className="w-full flex justify-end items-center mt-8">
-          <button className="bg-violet-800 text-white px-7 py-2 rounded-lg hover:bg-violet-700">
+          <button
+            onClick={handleSubmit}
+            className="bg-violet-800 text-white px-7 py-2 rounded-lg hover:bg-violet-700"
+          >
             Save
           </button>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { IoSchool, IoLogoLinkedin, IoLogoGithub } from 'react-icons/io5';
 import { PiGearFill } from 'react-icons/pi';
 
@@ -7,13 +7,23 @@ import { MdOutlineModeEditOutline } from 'react-icons/md';
 import MaxwidthXL from '../../ScreenSizes/MaxwidthXL';
 import Footer from '../footer/Footer';
 import AlumniSkills from './AlumniSkills';
+import AuthContext from '../../context/AuthContext';
+import Navbar3 from '../navbar/Navbar3';
+import UserContext from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
+  const { userData } = useContext(AuthContext);
+  const { updateProfile, fetchUserData,userProfileData} = useContext(UserContext);
   const [progress, setProgress] = useState(0);
   const [imagePreview, setImagePreview] = useState(null);
   const [avatarLoading, setAvatarLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Track data completion
+  console.log("udddd:",userData);
+  console.log("userProfileData:",userProfileData);
+
+  // State for form fields (initialize with fetched data)
   const [personalInfo, setPersonalInfo] = useState({
     name: '',
     email: '',
@@ -33,7 +43,7 @@ const Profile = () => {
   const [jobInfo, setJobInfo] = useState({
     currentCompany: '',
     jobRole: '',
-    skills: '',
+    skills: [],  
     workExperience: '',
     exCompany: '',
   });
@@ -41,6 +51,62 @@ const Profile = () => {
   const [extraActivities, setExtraActivities] = useState('');
   const [aboutSection, setAboutSection] = useState('');
   const [futurePlans, setFuturePlans] = useState('');
+
+  // Fetch user data when component mounts
+  useEffect(() => {
+    if (userData?._id) {
+      fetchUserData();
+    } else {
+      navigate('/login');
+    }
+  }, [userData?._id, navigate]);
+
+  // Update the form fields when userProfileData changes
+  useEffect(() => {
+    if (userProfileData) {
+      setPersonalInfo({
+        name: userProfileData.userId.fullName || '',
+        email: userProfileData.userId.email || '',
+        address: userProfileData.address || '',
+        contact: userProfileData.contact || '',
+        linkedin: userProfileData.linkedInProfile || '',
+        github: userProfileData.githubProfile || '',
+      });
+
+      setAcademicInfo({
+        collegeUg: userProfileData.ugCollege || '',
+        yearOfPassingUG: userProfileData.ugYearOfPassing || '',
+        collegePg: userProfileData.pgCollege || '',
+        yearOfPassingPG: userProfileData.pgYearOfPassing || '',
+      });
+
+      setJobInfo({
+        currentCompany: userProfileData.currentCompany || '',
+        jobRole: userProfileData.jobRole || '',
+        skills: userProfileData.skills || '',
+        workExperience: userProfileData.workExperience || '',
+        exCompany: userProfileData.exCompany || '',
+      });
+
+      setExtraActivities(userProfileData.extraActivities || '');
+      setAboutSection(userProfileData.about || '');
+      setFuturePlans(userProfileData.futurePlans || '');
+    }
+  }, [userProfileData]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const profileData = {
+      personalInfo,
+      academicInfo,
+      jobInfo,
+      extraActivities,
+      aboutSection,
+      futurePlans,
+    };
+
+    await updateProfile(profileData);
+  };
 
   // Function to calculate progress
   const calculateProgress = () => {
@@ -72,6 +138,17 @@ const Profile = () => {
     futurePlans,
   ]);
 
+  // useEffect(() => {
+  //   console.log("ud:",userData);
+  //   if (userData._id) {
+  //     console.log("hlrej")
+  //     fetchUserData();
+  //   } else {
+  //     // navigate('/login');
+  //     console.log("userdata not found.")
+  //   }
+  // }, []);
+
   // Handle Image Upload
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -90,8 +167,9 @@ const Profile = () => {
     <div className="relative w-full min-h-screen">
       {/* Info section right */}
       {/* <div className="w-full lg:w-2/3 overflow-y-auto flex flex-col gap-4"> */}
+      {userData.profession === 'student' && <Navbar3 />}
       <MaxwidthXL>
-        <div className="w-full flex flex-col sm:flex-row items-center justify-between mb-10">
+        <div className="w-full flex flex-col sm:flex-row items-center justify-between mb-10 ">
           {/* Image Upload */}
           <div className="w-44 h-44 relative rounded-full border-1 border-white shadow-md bg-gray-300">
             {avatarLoading ? (
@@ -120,14 +198,18 @@ const Profile = () => {
           </div>
           {/* Progress Bar */}
           <div className="w-full lg:w-[70%] p-4 lg:p-6 overflow-y-auto lg:overflow-hidden flex flex-col gap-4">
-            <h2 className="text-purple-900 text-lg font-bold">Profile Completion</h2>
+            <h2 className="text-purple-900 text-lg font-bold">
+              Profile Completion
+            </h2>
             <div className="w-full bg-gray-300 h-4 rounded-md mt-2">
               <div
                 className="bg-purple-700 h-4 rounded-md transition-all duration-300"
                 style={{ width: `${progress}%` }}
               ></div>
             </div>
-            <p className="text-gray-600 mt-2">{progress.toFixed(0)}% Complete</p>
+            <p className="text-gray-600 mt-2">
+              {progress.toFixed(0)}% Complete
+            </p>
           </div>
         </div>
 
@@ -142,7 +224,8 @@ const Profile = () => {
               <input
                 type="text"
                 placeholder="Name"
-                className="border p-3 rounded-md w-full"
+                className="border p-3 rounded-md w-full cursor-not-allowed outline-none bg-gray-100"
+                readOnly
                 value={personalInfo.name}
                 onChange={(e) =>
                   setPersonalInfo({ ...personalInfo, name: e.target.value })
@@ -154,7 +237,8 @@ const Profile = () => {
               <input
                 type="email"
                 placeholder="Email"
-                className="border p-3 rounded-md w-full"
+                className="border p-3 rounded-md w-full cursor-not-allowed outline-none bg-gray-100"
+                readOnly
                 value={personalInfo.email}
                 onChange={(e) =>
                   setPersonalInfo({ ...personalInfo, email: e.target.value })
@@ -330,7 +414,7 @@ const Profile = () => {
                 }
               />
             </div>
-              <AlumniSkills/>
+            <AlumniSkills />
             <div>
               <label className="text-gray-600 font-medium">Ex-Company</label>
               <input
@@ -400,7 +484,10 @@ const Profile = () => {
         </div>
 
         {/* Save button */}
-        <button className="absolute right-4 top-80 md:top-5 md:right-10 lg:top-2 lg:right-16 px-8 py-2 bg-purple-700 text-white border rounded-xl hover:bg-purple-600">
+        <button
+          onClick={handleSubmit}
+          className="absolute right-4 top-80 md:top-5 md:right-10 lg:top-24 lg:right-16 px-8 py-2 bg-purple-700 text-white border rounded-xl hover:bg-purple-600"
+        >
           Update
         </button>
       </MaxwidthXL>

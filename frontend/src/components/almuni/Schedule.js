@@ -4,7 +4,7 @@ import { IoAddCircle } from 'react-icons/io5';
 import Select from 'react-select';
 import toast from 'react-hot-toast';
 
-function Schedule() {
+function Schedule({ schedule, setSchedule }) {
   const days = [
     'Monday',
     'Tuesday',
@@ -14,7 +14,6 @@ function Schedule() {
     'Saturday',
     'Sunday',
   ];
-  const [schedule, setSchedule] = useState({});
 
   // Function to generate 15-minute intervals
   const generateTimeOptions = () => {
@@ -32,7 +31,7 @@ function Schedule() {
     return times;
   };
 
-  //   const timeOptions = generateTimeOptions();
+  //  Const timeOptions = generateTimeOptions();
   const timeOptions = Array.from({ length: 96 }, (_, index) => {
     const hours = String(Math.floor(index / 4)).padStart(2, '0');
     const minutes = String((index % 4) * 15).padStart(2, '0');

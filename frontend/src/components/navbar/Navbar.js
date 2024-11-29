@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { IoSearch } from 'react-icons/io5';
 import { FaBars } from 'react-icons/fa';
 import './Navbar.css';
 import logo from '../../assets/images/logo3.png';
+import AuthContext from '../../context/AuthContext';
 
 function Navbar() {
+  const {isAuthenticated} = useContext(AuthContext)
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -145,7 +147,7 @@ function Navbar() {
         )}
 
         {/* Links for larger screens */}
-        <div className="hidden sm:flex gap-5">
+        <div className={`hidden sm:flex gap-5`}>
           <NavLink
             to="/login"
             className={`font-semibold px-4 py-2 rounded-full navani ${

@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../../context/AuthContext';
 
 function SignUpPage() {
+  const { registerUser } = useContext(AuthContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [userType, setUserType] = useState('student');
+  const [profession, setProfession] = useState('student');
   const [errors, setErrors] = useState({ name: '', password: '', email: '' });
+  const navigate = useNavigate();
 
   const validateForm = () => {
     const newErrors = { name: '', password: '', email: '' };
@@ -35,7 +38,8 @@ function SignUpPage() {
   const handleSignUp = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log('Signing up with:', { name, password, userType });
+      registerUser(name, email, password, profession);
+      navigate('/login');
     } else {
       console.log('Please fill in all required fields');
     }
@@ -44,8 +48,12 @@ function SignUpPage() {
   return (
     <div className="w-full min-h-screen flex justify-center items-center bg-gradient-to-r from-purple-300 to-violet-400 px-4 sm:px-0">
       <div className="w-full max-w-[90%] sm:max-w-[75%] md:max-w-[50%] lg:max-w-[40%] xl:max-w-[30%] bg-purple-100 flex flex-col items-center justify-center py-10 px-6 sm:px-6 md:px-10 gap-4 rounded-xl shadow-md">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl text-violet-800 font-bold">CampusBuzz</h2>
-        <h3 className="text-xl sm:text-2xl lg:text-3xl text-black font-bold mb-5">Sign Up</h3>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl text-violet-800 font-bold">
+          CampusBuzz
+        </h2>
+        <h3 className="text-xl sm:text-2xl lg:text-3xl text-black font-bold mb-5">
+          Sign Up
+        </h3>
 
         <input
           type="text"
@@ -54,7 +62,11 @@ function SignUpPage() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        {errors.name && <p className="w-full text-red-600 text-start -mt-3 px-2 italic">{errors.name}</p>}
+        {errors.name && (
+          <p className="w-full text-red-600 text-start -mt-3 px-2 italic">
+            {errors.name}
+          </p>
+        )}
 
         <input
           type="email"
@@ -63,7 +75,11 @@ function SignUpPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {errors.email && <p className="w-full text-red-600 text-start -mt-3 px-2 italic">{errors.email}</p>}
+        {errors.email && (
+          <p className="w-full text-red-600 text-start -mt-3 px-2 italic">
+            {errors.email}
+          </p>
+        )}
 
         <div className="relative w-full">
           <input
@@ -85,18 +101,22 @@ function SignUpPage() {
             )}
           </button>
         </div>
-        {errors.password && <p className="w-full text-red-600 text-start -mt-3 px-2 italic">{errors.password}</p>}
+        {errors.password && (
+          <p className="w-full text-red-600 text-start -mt-3 px-2 italic">
+            {errors.password}
+          </p>
+        )}
 
         <select
           className="w-full px-3 sm:px-4 py-3 sm:py-4 text-base sm:text-lg text-black font-medium outline-none rounded-xl border border-gray-300 relative bg-white focus:border-violet-500 pr-12"
-          value={userType}
-          onChange={(e) => setUserType(e.target.value)}
+          value={profession}
+          onChange={(e) => setProfession(e.target.value)}
         >
           <option value="student" className="text-black font-medium">
             Student
           </option>
-          <option value="alumni" className="text-black font-medium">
-            Alumni
+          <option value="mentor" className="text-black font-medium">
+            Mentor
           </option>
         </select>
 
@@ -116,7 +136,9 @@ function SignUpPage() {
         </button>
         <p className="text-gray-400 font-medium text-sm sm:text-base">
           Already have an account?{' '}
-          <Link to="/login" className="text-black font-medium">Sign In</Link>
+          <Link to="/login" className="text-black font-medium">
+            Sign In
+          </Link>
         </p>
       </div>
     </div>
